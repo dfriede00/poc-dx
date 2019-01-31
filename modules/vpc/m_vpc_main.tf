@@ -1,17 +1,21 @@
-######
-# VPC
-######
-resource "aws_vpc" "this" {
+############
+# VPC MODULE
+############
+resource "aws_vpc" "vpc" {
   cidr_block           = "${var.cidr}"
   enable_dns_hostnames = "${var.enable_dns_hostnames}"
   enable_dns_support   = "${var.enable_dns_support}"
 
-  #  tags = "${merge(map("Name", format("%s", var.name)), var.tags, var.vpc_tags)}"
-}
+  # tags = {
+  #   Name = "something here"
+  # }
+  }
 
 resource "aws_internet_gateway" "igw" {
   count = "${var.create_igw}"
-  vpc_id = "${aws_vpc.this.id}"
+  vpc_id = "${aws_vpc.vpc.id}"
 
-  # tags = "something here"
+  # tags = {
+  #   Name = "something here"
+  # }
 }

@@ -5,27 +5,29 @@ provider "aws" {
   profile = "customprofile"
 }
 
-module "this_vpc" {
+module "vpc" {
   source = "modules/vpc"
 
+  name                 = "vpc_poc_dx"
   cidr                 = "10.64.128.0/23"
+
   enable_dns_hostnames = true
   enable_dns_support   = true
+
   create_igw           = true
 
   #  tags = "something here"
 }
 
-module "vpn_gateway" {
-  source = "modules/vpn_gateway"
+module "vpn" {
+  source = "modules/vpn"
 
   vpc_id              = "${module.vpc.vpc_id}"
-  vpn_gateway_id      = "${module.vpc.vgw_id}"
-  customer_gateway_id = "${aws_customer_gateway.main.id}"
 
-  # precalculated length of module variable vpc_subnet_route_table_ids
-  vpc_subnet_route_table_count = 3
-  vpc_subnet_route_table_ids   = ["${module.vpc.private_route_table_ids}"]
+  aws_side_asn        = "${var.aws_side_asn}"
+
+  customer_side_asn   = "26471"
+  customer_vpn_ip     = "<some external ip>"
 
   # tunnel inside cidr & preshared keys (optional)
   tunnel1_inside_cidr   = "${var.custom_tunnel1_inside_cidr}"
