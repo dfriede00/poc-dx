@@ -14,7 +14,7 @@ variable "customer_vpn_ip" {
   default = ""
 }
 variable "vpn_type" {
-  description = " (Required) The type of customer gateway. The only type AWS supports at this time is ipsec.1
+  description = " (Required) The type of customer gateway. The only type AWS supports at this time is ipsec.1"
   default = "ipsec.1"
 }
 
