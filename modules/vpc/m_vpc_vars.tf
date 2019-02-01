@@ -15,5 +15,5 @@ variable "enable_dns_support" {
 
 variable "create_igw" {
   description = "If set to true create IGW, default set to false"
-  default = false
+  default     = false
 }

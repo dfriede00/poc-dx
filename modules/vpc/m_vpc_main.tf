@@ -9,10 +9,10 @@ resource "aws_vpc" "vpc" {
   # tags = {
   #   Name = "something here"
   # }
-  }
+}
 
 resource "aws_internet_gateway" "igw" {
-  count = "${var.create_igw}"
+  count  = "${var.create_igw}"
   vpc_id = "${aws_vpc.vpc.id}"
 
   # tags = {
