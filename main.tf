@@ -27,7 +27,7 @@ module "vpn" {
   aws_side_asn        = "7224"
 
   customer_side_asn   = "65000"
-  customer_vpn_ip     = "192.168.1.1"
+  customer_vpn_ip     = "127.0.0.1"
 
   # tunnel inside cidr & preshared keys (optional)
   # tunnel1_inside_cidr   = "${var.custom_tunnel1_inside_cidr}"
