@@ -24,14 +24,14 @@ module "vpn" {
 
   vpc_id              = "${module.vpc.vpc_id}"
 
-  aws_side_asn        = "${var.aws_side_asn}"
+  aws_side_asn        = "7224"
 
-  customer_side_asn   = "26471"
-  customer_vpn_ip     = "<some external ip>"
+  customer_side_asn   = "65000"
+  customer_vpn_ip     = "192.168.1.1"
 
   # tunnel inside cidr & preshared keys (optional)
-  tunnel1_inside_cidr   = "${var.custom_tunnel1_inside_cidr}"
-  tunnel2_inside_cidr   = "${var.custom_tunnel2_inside_cidr}"
-  tunnel1_preshared_key = "${var.custom_tunnel1_preshared_key}"
-  tunnel2_preshared_key = "${var.custom_tunnel2_preshared_key}"
+  # tunnel1_inside_cidr   = "${var.custom_tunnel1_inside_cidr}"
+  # tunnel2_inside_cidr   = "${var.custom_tunnel2_inside_cidr}"
+  # tunnel1_preshared_key = "${var.custom_tunnel1_preshared_key}"
+  # tunnel2_preshared_key = "${var.custom_tunnel2_preshared_key}"
 }
