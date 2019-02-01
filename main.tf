@@ -8,15 +8,12 @@ provider "aws" {
 module "vpc" {
   source = "modules/vpc"
 
-  name = "vpc_poc_dx"
   cidr = "10.64.128.0/23"
 
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   create_igw = true
-
-  #  tags = "something here"
 }
 
 module "vpn" {
